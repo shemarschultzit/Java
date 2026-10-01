@@ -1,0 +1,89 @@
+import java.util.Scanner;
+
+public class expensereport {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        char currency = '$';
+        byte expenseCategories = 10;
+        short monthsInYear = 12;
+
+        System.out.print("Enter your name: ");
+        String name = input.nextLine();
+
+        System.out.print("Enter your monthly income: ");
+        double monthlyIncome = input.nextDouble();
+
+        System.out.print("Enter rent: ");
+        double rent = input.nextDouble();
+
+        System.out.print("Enter grocery cost: ");
+        double groceries = input.nextDouble();
+
+        System.out.print("Enter transportation cost: ");
+        double transportation = input.nextDouble();
+
+        System.out.print("Enter phone bill: ");
+        double phone = input.nextDouble();
+
+        System.out.print("Enter internet expense: ");
+        double internet = input.nextDouble();
+
+        System.out.print("Enter entertainment expenses: ");
+        double entertainment = input.nextDouble();
+
+        System.out.print("Enter school expenses: ");
+        double school = input.nextDouble();
+
+        System.out.print("Enter savings: ");
+        double savings = input.nextDouble();
+
+        System.out.print("Enter clothing expenses: ");
+        double clothing = input.nextDouble();
+
+        System.out.print("Enter dining expenses: ");
+        double dining = input.nextDouble();
+
+        double totalExpenses = rent + groceries + transportation
+                + phone + internet + entertainment + school
+                + savings + clothing + dining;
+
+        double remainingMoney = monthlyIncome - totalExpenses;
+        double weeklyExpenses = totalExpenses / 4.0;
+        int wholeDollarExpenses = (int) totalExpenses;
+        long yearlyExpenses = (long) (totalExpenses * monthsInYear);
+        boolean withinBudget = totalExpenses <= monthlyIncome;
+
+        System.out.println("\n===== MONTHLY EXPENSE REPORT =====");
+        System.out.println("Name:\t" + name);
+        System.out.println("Income:\t" + currency + monthlyIncome);
+        System.out.println("Categories:\t" + expenseCategories);
+
+        System.out.println("\nRent:\t" + currency + rent);
+        System.out.println("Groceries:\t" + currency + groceries);
+        System.out.println("Transportation:\t" + currency + transportation);
+        System.out.println("Phone:\t" + currency + phone);
+        System.out.println("Internet:\t" + currency + internet);
+        System.out.println("Entertainment:\t" + currency + entertainment);
+        System.out.println("School:\t" + currency + school);
+        System.out.println("Savings:\t" + currency + savings);
+        System.out.println("Clothing:\t" + currency + clothing);
+        System.out.println("Dining:\t" + currency + dining);
+
+        System.out.println("\nTotal Expenses:\t" + currency + totalExpenses);
+        System.out.println("Money Remaining:\t" + currency + remainingMoney);
+        System.out.println("Weekly Estimate:\t" + currency + weeklyExpenses);
+        System.out.println("Expenses in Whole Dollars:\t" + currency + wholeDollarExpenses);
+        System.out.println("Yearly Estimate in Whole Dollars:\t" + currency + yearlyExpenses);
+        System.out.println("Within Budget:\t" + withinBudget);
+
+        if (monthlyIncome > 0) {
+            float expensePercentage = (float) ((totalExpenses / monthlyIncome) * 100);
+            System.out.println("\nYou spend " + expensePercentage + "% of your monthly income.");
+        } else {
+            System.out.println("\nPercentage cannot be calculated with zero or negative income.");
+        }
+
+        input.close();
+    }
+}
